@@ -2,15 +2,21 @@
 <p id="notice"> <% notice %> </p>
 <% end %>
 
+
 <h1>Product List</h1>
 
-<% @products.each do |product| %>
-<div class="entry">
-	<%= image_tag(product.image_url) %>
-	<h3><%= product.title %></h3>
-	<%= sanitize(product.description) %>
-	<div class="price_line">
-		<span class="price"> <%= number_to_currency(product.price) %></span>
-	</div>
-</div>
-<% end %>
+
+	<table class="table table-striped">
+		<% @products.each do |product| %>
+			<tr>
+				<td>
+					<%= image_tag(product.image_url) %>
+				</td>
+				<td>
+					<h3><%= product.title %></h3>
+					<%= sanitize(product.description) %>
+					<%= number_to_currency(product.price) %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
